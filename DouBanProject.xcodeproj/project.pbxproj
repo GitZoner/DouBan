@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C268F44D1CE0226600E11D81 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = C268F44C1CE0226600E11D81 /* Movie.m */; };
+		C268F4501CE0262C00E11D81 /* NetWorkRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C268F44F1CE0262C00E11D81 /* NetWorkRequestManager.m */; };
 		C2E1DA721CDC726A00806744 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E1DA711CDC726A00806744 /* main.m */; };
 		C2E1DA7B1CDC726A00806744 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2E1DA791CDC726A00806744 /* Main.storyboard */; };
 		C2E1DA7D1CDC726A00806744 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2E1DA7C1CDC726A00806744 /* Assets.xcassets */; };
@@ -44,6 +45,9 @@
 		C268F44A1CE0203A00E11D81 /* Main_marco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Main_marco.h; sourceTree = "<group>"; };
 		C268F44B1CE0226600E11D81 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
 		C268F44C1CE0226600E11D81 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
+		C268F44E1CE0262C00E11D81 /* NetWorkRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkRequestManager.h; sourceTree = "<group>"; };
+		C268F44F1CE0262C00E11D81 /* NetWorkRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkRequestManager.m; sourceTree = "<group>"; };
+		C268F4511CE03C6000E11D81 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		C2E1DA6D1CDC726A00806744 /* DouBanProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DouBanProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E1DA711CDC726A00806744 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C2E1DA7A1CDC726A00806744 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -172,6 +176,8 @@
 		C2E1DA8C1CDC755300806744 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C268F44E1CE0262C00E11D81 /* NetWorkRequestManager.h */,
+				C268F44F1CE0262C00E11D81 /* NetWorkRequestManager.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -181,6 +187,7 @@
 			children = (
 				C2E1DAB31CDC832E00806744 /* Color_marco.h */,
 				C268F44A1CE0203A00E11D81 /* Main_marco.h */,
+				C268F4511CE03C6000E11D81 /* Singleton.h */,
 			);
 			path = Marco;
 			sourceTree = "<group>";
@@ -489,6 +496,7 @@
 				C2E1DADD1CDC9ECF00806744 /* PublicButton.m in Sources */,
 				C2E1DAB21CDC7B2400806744 /* UserViewController.m in Sources */,
 				C2E1DA921CDC755300806744 /* AppDelegate.m in Sources */,
+				C268F4501CE0262C00E11D81 /* NetWorkRequestManager.m in Sources */,
 				C2E1DAAF1CDC7B0A00806744 /* MovieListViewController.m in Sources */,
 				C2E1DA721CDC726A00806744 /* main.m in Sources */,
 				C2E1DAAC1CDC7AED00806744 /* CinemaListViewController.m in Sources */,

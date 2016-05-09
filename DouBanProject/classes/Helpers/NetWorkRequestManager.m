@@ -41,7 +41,7 @@
     // 2.拼接字符串 (设置请求体）
     NSMutableString *urlStr = [NSMutableString stringWithString:urlString];
     
-    if (!dict) {
+    if (dict) {
         [urlStr appendString:@"?"];
         [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             [ urlStr appendString:[NSString stringWithFormat:@"%@=%@&",key,obj]];
@@ -65,6 +65,7 @@
         
         if (data && !error) {
             // 这是一个封装，要求适用不止一种请求，只负责请求，不需要负责解析
+            NSLog(@"已成功获取网路请求数据");
             success(data);
         }else {
             if (!data) {

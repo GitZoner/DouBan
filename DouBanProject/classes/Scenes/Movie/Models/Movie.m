@@ -7,7 +7,11 @@
 //
 
 #import "Movie.h"
+#import "ImageDownloader.h"
 
+@interface Movie() <ImageDownloaderDelegate>
+
+@end
 @implementation Movie
 // 重写 setValue：forUndefinedKey
 
@@ -18,7 +22,13 @@
     
 }
 
+-(void)loadImage {
+    NSString *imageUrlString = self.images[@"medium"];
+    [ImageDownloader ImageDownloaderWithImageUrlString:imageUrlString delegate:self];
+}
 
-
-
+#pragma mark - ImageDownloaderDelegate
+-(void)imageDownloader:(ImageDownloader *)imageDownloader didFinishedLoading:(UIImage *)image {
+    self.image = image;
+}
 @end

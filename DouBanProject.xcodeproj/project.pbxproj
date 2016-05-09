@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		C268F44D1CE0226600E11D81 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = C268F44C1CE0226600E11D81 /* Movie.m */; };
 		C268F4501CE0262C00E11D81 /* NetWorkRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C268F44F1CE0262C00E11D81 /* NetWorkRequestManager.m */; };
+		C268F4551CE0691E00E11D81 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C268F4531CE0691E00E11D81 /* MovieCell.m */; };
+		C268F4561CE0691E00E11D81 /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C268F4541CE0691E00E11D81 /* MovieCell.xib */; };
+		C268F4591CE07F5000E11D81 /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = C268F4581CE07F5000E11D81 /* ImageDownloader.m */; };
 		C2E1DA721CDC726A00806744 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E1DA711CDC726A00806744 /* main.m */; };
 		C2E1DA7B1CDC726A00806744 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2E1DA791CDC726A00806744 /* Main.storyboard */; };
 		C2E1DA7D1CDC726A00806744 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2E1DA7C1CDC726A00806744 /* Assets.xcassets */; };
@@ -48,6 +51,11 @@
 		C268F44E1CE0262C00E11D81 /* NetWorkRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkRequestManager.h; sourceTree = "<group>"; };
 		C268F44F1CE0262C00E11D81 /* NetWorkRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkRequestManager.m; sourceTree = "<group>"; };
 		C268F4511CE03C6000E11D81 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		C268F4521CE0691E00E11D81 /* MovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
+		C268F4531CE0691E00E11D81 /* MovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
+		C268F4541CE0691E00E11D81 /* MovieCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
+		C268F4571CE07F5000E11D81 /* ImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownloader.h; sourceTree = "<group>"; };
+		C268F4581CE07F5000E11D81 /* ImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownloader.m; sourceTree = "<group>"; };
 		C2E1DA6D1CDC726A00806744 /* DouBanProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DouBanProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E1DA711CDC726A00806744 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C2E1DA7A1CDC726A00806744 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -178,6 +186,8 @@
 			children = (
 				C268F44E1CE0262C00E11D81 /* NetWorkRequestManager.h */,
 				C268F44F1CE0262C00E11D81 /* NetWorkRequestManager.m */,
+				C268F4571CE07F5000E11D81 /* ImageDownloader.h */,
+				C268F4581CE07F5000E11D81 /* ImageDownloader.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -322,6 +332,9 @@
 		C2E1DA9E1CDC772400806744 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C268F4521CE0691E00E11D81 /* MovieCell.h */,
+				C268F4531CE0691E00E11D81 /* MovieCell.m */,
+				C268F4541CE0691E00E11D81 /* MovieCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -477,6 +490,7 @@
 				C2E1DACA1CDC895900806744 /* paper.png in Resources */,
 				C2E1DAD31CDC895900806744 /* video.png in Resources */,
 				C2E1DACD1CDC895900806744 /* paperH@2x.png in Resources */,
+				C268F4561CE0691E00E11D81 /* MovieCell.xib in Resources */,
 				C2E1DAC71CDC895900806744 /* 2image@2x.png in Resources */,
 				C2E1DAC81CDC895900806744 /* 2imageH.png in Resources */,
 				C2E1DAD21CDC895900806744 /* post_normal@2x.png in Resources */,
@@ -504,6 +518,8 @@
 				C2E1DAA91CDC7AC500806744 /* ActivityListViewController.m in Sources */,
 				C2E1DAE01CDCA3B000806744 /* CustomTabBar.m in Sources */,
 				C2E1DADA1CDC962800806744 /* UIImage+ImageContentWithColor.m in Sources */,
+				C268F4591CE07F5000E11D81 /* ImageDownloader.m in Sources */,
+				C268F4551CE0691E00E11D81 /* MovieCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

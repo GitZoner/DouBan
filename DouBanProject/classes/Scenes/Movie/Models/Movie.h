@@ -20,6 +20,8 @@
 @property (nonatomic, copy) NSString *stars;            // 星级
 @property (nonatomic, copy) NSString *title;            // 标题
 @property (nonatomic, copy) NSString *wish;             //
-
+// 自己添加的一个属性，不再数据解析里面的属性
 @property (nonatomic, strong) UIImage *image;           // 图片
+
+-(void)loadImage;
 @end

@@ -7,7 +7,10 @@
 //
 
 #import "MovieListViewController.h"
-
+#import "NetWorkRequestManager.h"
+#import "Main_marco.h"
+#import "Movie.h"
+#import "MovieCell.h"
 
 
 @interface MovieListViewController ()
@@ -16,13 +19,57 @@
 @property (strong,nonatomic)NSMutableArray *allMovieArray;
 
 @end
-
+static NSString *MovieCellReuseIdentifier = @"MovieCellID";
 @implementation MovieListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    // 进行网络请求
+    [self requestData];
+    // 注册 cell
+    [self.tableView registerNib:[UINib nibWithNibName:@"MovieCell" bundle:nil] forCellReuseIdentifier:MovieCellReuseIdentifier];
    
+}
+
+-(void)requestData {
+    
+    
+    __weak typeof (self) movieTVC = self;
+
+    
+    [NetWorkRequestManager requestType:GET URLString:MOVIE_LIST_URL Param:nil Successed:^(id data) {
+        NSMutableDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingAllowFragments) error:nil];
+        NSLog(@"获取的字典：%@",dic);
+        //  判断字典里有多少条数据
+        if ([dic[@"total"] intValue] != 0) {
+            NSArray *allDataArray = dic[@"entries"];
+            for (NSDictionary *dict in allDataArray) {
+                Movie *movie = [Movie new];
+                [movie setValuesForKeysWithDictionary:dict];
+                [movieTVC.allMovieArray addObject:movie];
+                NSLog(@"解析时电影个数：%ld",movieTVC.allMovieArray.count);
+            }
+            
+            [_allMovieArray sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                Movie *movie1 = (Movie *)obj1;
+                Movie *movie2 = (Movie *)obj2;
+                return [movie2.pubdate compare:movie1.pubdate];
+            }];
+        }
+        NSLog(@"解析后电影个数：%ld",movieTVC.allMovieArray.count);
+        dispatch_async(dispatch_get_main_queue(), ^{
+           // 数据解析和排序完成后，刷新页面
+            
+            [movieTVC updateDataForUI];
+        });
+    } Failed:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
+-(void)updateDataForUI {
+    
+    [self.tableView reloadData];
 }
 
 /**
@@ -45,23 +92,34 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 0;
+    return self.allMovieArray.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
+    MovieCell  *cell = [tableView dequeueReusableCellWithIdentifier:MovieCellReuseIdentifier forIndexPath:indexPath];
+    // 设置 cell 显示的内容
+    Movie *movie = self.allMovieArray[indexPath.row];
+    cell.movie = movie;
+    if (movie.image != nil) {
+        cell.imageView.image = movie.image;
+    }else {
+        [movie loadImage];
+        
+    }
     
     return cell;
 }
-*/
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 110;
+}
+
 
 /*
 // Override to support conditional editing of the table view.

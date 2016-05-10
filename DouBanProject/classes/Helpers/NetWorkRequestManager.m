@@ -7,12 +7,15 @@
 //
 
 #import "NetWorkRequestManager.h"
+#import "MBProgressHUD+gifHUD.h"
 
 @implementation NetWorkRequestManager
 
 
 
 +(void)requestType:(requestType)type URLString:(NSString *)urlString Param:(NSDictionary *)param Successed:(successedBlock)successedBlock Failed:(failedBlock)failBlock {
+    
+   
     
     switch (type) {
         case GET:{

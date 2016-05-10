@@ -12,6 +12,7 @@
 #import "Movie.h"
 #import "MovieCell.h"
 #import "MovieDetailViewController.h"
+#import "MBProgressHUD+gifHUD.h"
 
 
 @interface MovieListViewController ()
@@ -27,13 +28,15 @@
     [super viewDidLoad];
     // 进行网络请求
     [self requestData];
+    
     // 注册 cell
     [self.tableView registerNib:[UINib nibWithNibName:@"MovieCell" bundle:nil] forCellReuseIdentifier:@"MovieCellReuseIdentifierID"];
    
 }
 
 -(void)requestData {
-    
+    // 添加“正在加载。。。”的动画视图
+    [MBProgressHUD setUpHUDWithFrame:CGRectMake(0, 0, 50, 50) gifName:@"pika" andShowToView:self.view];
     
     __weak typeof (self) movieTVC = self;
 
@@ -69,7 +72,7 @@
 }
 
 -(void)updateDataForUI {
-    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     [self.tableView reloadData];
 }
 

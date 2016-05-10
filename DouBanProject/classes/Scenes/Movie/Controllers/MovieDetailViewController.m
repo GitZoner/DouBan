@@ -10,6 +10,8 @@
 #import "NetWorkRequestManager.h"
 #import "Main_marco.h"
 #import "ImageDownloader.h"
+#import "MBProgressHUD+gifHUD.h"
+
 
 @interface MovieDetailViewController ()<ImageDownloaderDelegate>
 
@@ -27,6 +29,8 @@
 }
 
 -(void)sendRequestGetData {
+    [MBProgressHUD setUpHUDWithFrame:CGRectMake(0, 0, 50, 50) gifName:@"pika" andShowToView:self.view];
+    
     __weak typeof (MovieDetailViewController *) movieDetailVC = self;
     // 拼接网址
     NSString *urlString = [NSString stringWithFormat:@"%@%@%@",MOVIE_INFO_URL_1,_movie.ID,MOVIE_INFO_URL_2];
@@ -66,6 +70,8 @@
     CGSize size = CGSizeMake(_scrollView.frame.size.width, 190 + _summaryLabel.frame.size.height);
     _contentView.frame = CGRectMake(0, 0, size.width, size.height);
     self.contentViewHeight.constant = size.height + 20;
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 
 }
 
@@ -88,7 +94,7 @@
 #pragma mark - 计算文本高度
 -(CGFloat)calculateTextHeightWithMovie:(Movie *)movie {
     
-    CGSize size = CGSizeMake(_summaryLabel.frame.size.width, 10000);
+    CGSize size = CGSizeMake(_summaryLabel.frame.size.width, 100000000);
 #warning 字体属性值的设置，课下复习
     NSDictionary *dict = @{NSFontAttributeName:[UIFont systemFontOfSize:24.0f]};
     CGRect rect = [movie.summary boundingRectWithSize:size options:(NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin) attributes:dict context:nil];

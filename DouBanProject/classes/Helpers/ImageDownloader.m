@@ -30,8 +30,11 @@
             
             // 4, 图片传值
             UIImage *image = [UIImage imageWithData:data];
-            // 5,让代理执行代理方法，将图片传出；
-            [delegate imageDownloader:downloader didFinishedLoading:image];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // 5,让代理执行代理方法，将图片传出；
+                [delegate imageDownloader:downloader didFinishedLoading:image];
+            });
+            
         }];
     }
     return self;

@@ -11,7 +11,7 @@
 @implementation MovieCell
 
 -(void)setMovie:(Movie *)movie {
-    if (movie != movie) {
+    if (_movie != movie) {
         _movie = nil;
         _movie = movie;
         self.movieNameLabel.text = _movie.title;

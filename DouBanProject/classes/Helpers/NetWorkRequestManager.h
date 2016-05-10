@@ -9,23 +9,23 @@
 #import <Foundation/Foundation.h>
 #import "Singleton.h"
 /**
- *  <#Description#>
+ *    标记请求方式的枚举值
  */
 typedef NS_ENUM(NSInteger,requestType) {
     /**
-     *  <#Description#>
+     *   get 请求
      */
     GET,
     /**
-     *  <#Description#>
+     *   post 请求
      */
     POST,
     /**
-     *  <#Description#>
+     *   delegate 请求
      */
     DELETE,
     /**
-     *  <#Description#>
+     *   put 请求
      */
     PUT
 };

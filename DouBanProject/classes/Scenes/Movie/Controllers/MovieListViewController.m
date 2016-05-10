@@ -19,7 +19,7 @@
 @property (strong,nonatomic)NSMutableArray *allMovieArray;
 
 @end
-static NSString *MovieCellReuseIdentifier = @"MovieCellID";
+//static NSString * const MovieCellReuseIdentifier = @"MovieCellReuseIdentifierID";
 @implementation MovieListViewController
 
 - (void)viewDidLoad {
@@ -27,7 +27,7 @@ static NSString *MovieCellReuseIdentifier = @"MovieCellID";
     // 进行网络请求
     [self requestData];
     // 注册 cell
-    [self.tableView registerNib:[UINib nibWithNibName:@"MovieCell" bundle:nil] forCellReuseIdentifier:MovieCellReuseIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"MovieCell" bundle:nil] forCellReuseIdentifier:@"MovieCellReuseIdentifierID"];
    
 }
 
@@ -39,7 +39,7 @@ static NSString *MovieCellReuseIdentifier = @"MovieCellID";
     
     [NetWorkRequestManager requestType:GET URLString:MOVIE_LIST_URL Param:nil Successed:^(id data) {
         NSMutableDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingAllowFragments) error:nil];
-        NSLog(@"获取的字典：%@",dic);
+       
         //  判断字典里有多少条数据
         if ([dic[@"total"] intValue] != 0) {
             NSArray *allDataArray = dic[@"entries"];
@@ -47,7 +47,7 @@ static NSString *MovieCellReuseIdentifier = @"MovieCellID";
                 Movie *movie = [Movie new];
                 [movie setValuesForKeysWithDictionary:dict];
                 [movieTVC.allMovieArray addObject:movie];
-                NSLog(@"解析时电影个数：%ld",movieTVC.allMovieArray.count);
+               
             }
             
             [_allMovieArray sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
@@ -56,7 +56,7 @@ static NSString *MovieCellReuseIdentifier = @"MovieCellID";
                 return [movie2.pubdate compare:movie1.pubdate];
             }];
         }
-        NSLog(@"解析后电影个数：%ld",movieTVC.allMovieArray.count);
+       
         dispatch_async(dispatch_get_main_queue(), ^{
            // 数据解析和排序完成后，刷新页面
             
@@ -102,18 +102,43 @@ static NSString *MovieCellReuseIdentifier = @"MovieCellID";
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MovieCell  *cell = [tableView dequeueReusableCellWithIdentifier:MovieCellReuseIdentifier forIndexPath:indexPath];
+    MovieCell  *cell = [self.tableView dequeueReusableCellWithIdentifier:@"MovieCellReuseIdentifierID" forIndexPath:indexPath];
     // 设置 cell 显示的内容
     Movie *movie = self.allMovieArray[indexPath.row];
     cell.movie = movie;
     if (movie.image != nil) {
-        cell.imageView.image = movie.image;
+        cell.movieImageView.image = movie.image;
     }else {
         [movie loadImage];
+        // 使用 KVO 添加监听事件
+        [movie addObserver:self forKeyPath:@"image" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:(void *)CFBridgingRetain(indexPath)];
         
     }
     
     return cell;
+}
+
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    
+    // 获取图片
+    UIImage *image = change[NSKeyValueChangeNewKey];
+    // 获取 cell 的位置
+    NSIndexPath *indexPath = (__bridge NSIndexPath *)(context);
+    // 获取所有正在显示的 cell 的位置
+    NSArray *indexPathArray  = [self.tableView indexPathsForVisibleRows];
+    
+    if ([indexPathArray containsObject:indexPath]) {
+        // 获取当前 cell
+        MovieCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        cell.movieImageView.image = image;
+        //[self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+    }
+    
+    CFBridgingRelease((__bridge CFTypeRef _Nullable)(indexPath));
+    [object removeObserver:self forKeyPath:@"image" context:context];
+
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

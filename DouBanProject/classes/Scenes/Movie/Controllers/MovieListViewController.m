@@ -11,6 +11,7 @@
 #import "Main_marco.h"
 #import "Movie.h"
 #import "MovieCell.h"
+#import "MovieDetailViewController.h"
 
 
 @interface MovieListViewController ()
@@ -145,7 +146,13 @@
     return 110;
 }
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    MovieDetailViewController  *movieDetailVC = [MovieDetailViewController new];
+    Movie *movie = self.allMovieArray[indexPath.row];
+    movieDetailVC.movie = movie;
+    [self.navigationController pushViewController:movieDetailVC animated:YES];
+    
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

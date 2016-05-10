@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface Movie : NSObject
-#pragma mark - 属性
+#pragma mark - 电影主页属性
 @property (nonatomic, copy) NSString *collection;       //
 @property (nonatomic, copy) NSString *ID;               // id
 @property (nonatomic, strong) NSDictionary *images;     // 图片数组
@@ -24,4 +24,12 @@
 @property (nonatomic, strong) UIImage *image;           // 图片
 
 -(void)loadImage;
+
+#pragma mark -详情页的属性
+@property (nonatomic, copy) NSString *summary;          // 电影简介
+@property (nonatomic, strong) NSArray *genres;          // 分类
+@property (nonatomic, strong) NSArray *countries;       // 国家
+@property (nonatomic, strong) NSArray *durations;       // 时长
+@property (nonatomic, copy) NSString *comments_count;   // 评论人数
+
 @end

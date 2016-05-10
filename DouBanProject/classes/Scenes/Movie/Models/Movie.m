@@ -14,11 +14,16 @@
 @end
 @implementation Movie
 // 重写 setValue：forUndefinedKey
-
--(void)setValue:(id)value forUndefinedKey:(NSString *)key {
+// 如果
+-(void)setValue:(id)value forKey:(NSString *)key {
    
     key = [key isEqualToString:@"id"]? @"ID":key;
+    // super调用自己的方法，避免循环调用的问题
     [super setValue:value forKey:key];
+    
+}
+
+-(void)setValue:(id)value forUndefinedKey:(NSString *)key {
     
 }
 

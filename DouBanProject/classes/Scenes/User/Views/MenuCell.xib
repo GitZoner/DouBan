@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="140" id="KGk-i7-Jjw" customClass="MenuCell">
+            <rect key="frame" x="0.0" y="0.0" width="356" height="94"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="356" height="93"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wwh-89-PJq">
+                        <rect key="frame" x="296" y="37" width="42" height="21"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i2R-iv-vHQ">
+                        <rect key="frame" x="23" y="37" width="198" height="21"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="6Ah-Dt-S5e"/>
+                            <constraint firstAttribute="width" constant="198" id="gQA-Tu-JeZ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <animations/>
+                <constraints>
+                    <constraint firstItem="i2R-iv-vHQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="14" id="1bW-Wr-JqT"/>
+                    <constraint firstItem="wwh-89-PJq" firstAttribute="height" secondItem="i2R-iv-vHQ" secondAttribute="height" id="5iR-zd-j4B"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="wwh-89-PJq" secondAttribute="trailing" constant="10" id="9KC-0x-qeM"/>
+                    <constraint firstItem="i2R-iv-vHQ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Jem-wk-HQm"/>
+                    <constraint firstItem="wwh-89-PJq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jub-J9-Vb0"/>
+                    <constraint firstItem="wwh-89-PJq" firstAttribute="leading" secondItem="i2R-iv-vHQ" secondAttribute="trailing" id="tCx-De-918"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="tCx-De-918"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <animations/>
+            <connections>
+                <outlet property="MenuitemLabel" destination="i2R-iv-vHQ" id="lb6-YS-IBp"/>
+                <outlet property="stateLabel" destination="wwh-89-PJq" id="f5S-1k-bmT"/>
+            </connections>
+            <point key="canvasLocation" x="241" y="354"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9059"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CinemaMapViewController">
+            <connections>
+                <outlet property="mapView" destination="JJH-Kz-swu" id="5oQ-ed-gaf"/>
+                <outlet property="view" destination="iN0-l3-epB" id="ouj-tB-nwV"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJH-Kz-swu" customClass="BMKMapView">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <animations/>
+                    <color key="backgroundColor" red="1" green="0.45495525199999998" blue="0.082874815559999995" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="JJH-Kz-swu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3Pb-ma-WLe"/>
+                <constraint firstAttribute="bottom" secondItem="JJH-Kz-swu" secondAttribute="bottom" id="Dod-Jm-vfR"/>
+                <constraint firstAttribute="trailing" secondItem="JJH-Kz-swu" secondAttribute="trailing" id="Pg1-iU-wnZ"/>
+                <constraint firstItem="JJH-Kz-swu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Tj7-bz-uez"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

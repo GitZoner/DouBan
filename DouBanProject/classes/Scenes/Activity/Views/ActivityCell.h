@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Activity.h"
 @interface ActivityCell : UITableViewCell
 
++(CGFloat)getHeightForCellWithActivity:(Activity *)activity;
+@property (strong,nonatomic)Activity *activity;
 @end

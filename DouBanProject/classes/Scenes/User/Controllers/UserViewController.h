@@ -1,13 +1,13 @@
 //
 //  UserViewController.h
-//  DouBanProject
+//  Douban
 //
-//  Created by lanou3g on 16/5/6.
-//  Copyright © 2016年 Jason. All rights reserved.
+//  Created by 张磊 on 16/5/4.
+//  Copyright © 2016年 张磊. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface UserViewController : UIViewController
+@interface UserViewController : UITableViewController
 
 @end

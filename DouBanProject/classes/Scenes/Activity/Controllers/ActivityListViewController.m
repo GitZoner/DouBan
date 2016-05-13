@@ -8,25 +8,53 @@
 
 #import "ActivityListViewController.h"
 #import "ActivityCell.h"
-
+#import "NetWorkRequestManager.h"
+#import "Main_marco.h"
+#import "Activity.h"
 @interface ActivityListViewController ()
 
+
+@property (strong,nonatomic)NSMutableArray *allActivitiesArray;// 存放所有活动对象的数组
 @end
 
 static NSString *const activityCellReuseIdentifier = @"ativityCellID";
 @implementation ActivityListViewController
 
+// 懒加载存放所有活动对象的数组
+-(NSMutableArray *)allActivitiesArray {
+    if (!_allActivitiesArray) {
+        _allActivitiesArray = [NSMutableArray new];
+        
+    }
+    return _allActivitiesArray;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // 发起网络请求
+    [self sendNetRequest];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self.tableView registerClass:[ActivityCell class] forCellReuseIdentifier:activityCellReuseIdentifier];
 }
 
+-(void)sendNetRequest {
+    __weak typeof (ActivityListViewController *)activityListVC  = self;
+    [NetWorkRequestManager requestType:GET URLString:ACTIVITY_LIST_URL Param:nil Successed:^(id data) {
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingAllowFragments) error:nil];
+        NSArray *eventArray = dict[@"events"];
+        for (NSDictionary *dic in eventArray) {
+            Activity *activity = [Activity new];
+            [activity setValuesForKeysWithDictionary:dic];
+            [activityListVC.allActivitiesArray addObject:activity];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [activityListVC.tableView reloadData];
+        });
+        
+    } Failed:^(NSError *error) {
+        
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -35,26 +63,28 @@ static NSString *const activityCellReuseIdentifier = @"ativityCellID";
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
+
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 10;
+
+    return self.allActivitiesArray.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:activityCellReuseIdentifier forIndexPath:indexPath];
+    Activity *activity = self.allActivitiesArray[indexPath.row];
+    cell.activity = activity;
     
-    // Configure the cell...
-    
+    cell.selected = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 150;
+    Activity *activity = self.allActivitiesArray[indexPath.row];
+    return [[ActivityCell class] getHeightForCellWithActivity:activity];
 }
 /*
 // Override to support conditional editing of the table view.

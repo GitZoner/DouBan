@@ -11,9 +11,10 @@
 #import "Main_marco.h"
 #import "ImageDownloader.h"
 #import "MBProgressHUD+gifHUD.h"
+#import <UMSocialSnsService.h>
+#import <UMSocial.h>
 
-
-@interface MovieDetailViewController ()<ImageDownloaderDelegate>
+@interface MovieDetailViewController ()<ImageDownloaderDelegate,UMSocialUIDelegate>
 
 @end
 
@@ -23,10 +24,51 @@
     [super viewDidLoad];
     // 请求数据
     [self sendRequestGetData];
+    // 设置分享按钮
+    [self setNavigationItem];
+    
     
     
     
 }
+
+-(void)setNavigationItem {
+    // 分享按钮
+    UIBarButtonItem *shareBI  = [[UIBarButtonItem alloc] initWithTitle:@"分享" style:(UIBarButtonItemStyleDone) target:self action:@selector(shareAction: )];
+    // 收藏按钮
+    UIBarButtonItem *collectionBI = [[UIBarButtonItem alloc] initWithTitle:@"收藏" style:(UIBarButtonItemStylePlain) target:self action:@selector(collectionAction :)];
+    self.navigationItem.rightBarButtonItems = @[shareBI,collectionBI];
+}
+
+#pragma mark -分享和收藏按钮的点击事件
+-(void)shareAction:(UIBarButtonItem *)barButtonItem {
+    //如果需要分享回调，请将delegate对象设置self，并实现下面的回调方法
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:@"5732d30b67e58e71c300187d"
+                                      shareText:_movie.title
+                                     shareImage:_movie.image
+                                shareToSnsNames:@[UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQQ,UMShareToQzone,UMShareToSina]
+                                       delegate:self];
+}
+
+-(void)collectionAction:(UIBarButtonItem *)barButttonItem {
+    
+}
+
+#pragma mark -友盟分享的回调方法
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    //根据`responseCode`得到发送结果,如果分享成功
+    if(response.responseCode == UMSResponseCodeSuccess)
+    {
+        //得到分享到的平台名
+        NSLog(@"分享成功:%@",[[response.data allKeys] objectAtIndex:0]);
+    }else {
+        NSLog(@"分享失败，错误代码：%u",response.responseCode);
+    }
+}
+#pragma mark -使用系统回调
+
 
 -(void)sendRequestGetData {
     [MBProgressHUD setUpHUDWithFrame:CGRectMake(0, 0, 50, 50) gifName:@"pika" andShowToView:self.view];

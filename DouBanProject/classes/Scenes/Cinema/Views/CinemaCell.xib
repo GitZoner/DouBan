@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="196" id="KGk-i7-Jjw" customClass="CinemaCell">
+            <rect key="frame" x="0.0" y="0.0" width="422" height="196"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="422" height="195"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1d-ev-HNN">
+                        <rect key="frame" x="0.0" y="9" width="422" height="186"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1R-hN-vDw">
+                                <rect key="frame" x="20" y="20" width="382" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="3E5-h5-6Fe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vpa-vi-0ZI">
+                                <rect key="frame" x="20" y="60" width="382" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JX6-cu-MgS">
+                                <rect key="frame" x="20" y="91" width="191" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="rR2-V8-PoZ"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="telNumButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bbE-XC-A9K"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JX6-cu-MgS" firstAttribute="leading" secondItem="Vpa-vi-0ZI" secondAttribute="leading" id="0xq-Rx-iTb"/>
+                            <constraint firstItem="JX6-cu-MgS" firstAttribute="width" secondItem="Vpa-vi-0ZI" secondAttribute="width" multiplier="0.5" id="APp-5q-pm7"/>
+                            <constraint firstItem="R1R-hN-vDw" firstAttribute="leading" secondItem="h1d-ev-HNN" secondAttribute="leading" constant="20" id="Erw-or-Ymp"/>
+                            <constraint firstItem="Vpa-vi-0ZI" firstAttribute="width" secondItem="R1R-hN-vDw" secondAttribute="width" id="I32-rd-HeH"/>
+                            <constraint firstAttribute="bottom" secondItem="JX6-cu-MgS" secondAttribute="bottom" constant="65" id="QDw-EK-nY3"/>
+                            <constraint firstItem="R1R-hN-vDw" firstAttribute="top" secondItem="h1d-ev-HNN" secondAttribute="top" constant="20" id="WeX-hO-xWD"/>
+                            <constraint firstItem="Vpa-vi-0ZI" firstAttribute="leading" secondItem="R1R-hN-vDw" secondAttribute="leading" id="q5C-DN-ayq"/>
+                            <constraint firstAttribute="trailing" secondItem="R1R-hN-vDw" secondAttribute="trailing" constant="20" id="sSe-BS-gcH"/>
+                            <constraint firstItem="Vpa-vi-0ZI" firstAttribute="top" secondItem="R1R-hN-vDw" secondAttribute="bottom" constant="10" id="wGg-oN-7d6"/>
+                            <constraint firstItem="JX6-cu-MgS" firstAttribute="top" secondItem="Vpa-vi-0ZI" secondAttribute="bottom" constant="10" id="yzt-ks-rZa"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="QDw-EK-nY3"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </subviews>
+                <animations/>
+                <constraints>
+                    <constraint firstItem="h1d-ev-HNN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="6uc-2b-jrp"/>
+                    <constraint firstItem="h1d-ev-HNN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="GDq-jW-bKd"/>
+                    <constraint firstAttribute="bottom" secondItem="h1d-ev-HNN" secondAttribute="bottom" id="W5Y-88-Wbl"/>
+                    <constraint firstAttribute="trailing" secondItem="h1d-ev-HNN" secondAttribute="trailing" id="ZOp-Vv-ol2"/>
+                </constraints>
+            </tableViewCellContentView>
+            <animations/>
+            <connections>
+                <outlet property="addressLabel" destination="Vpa-vi-0ZI" id="KAR-Db-9sE"/>
+                <outlet property="backView" destination="h1d-ev-HNN" id="i0X-rW-svF"/>
+                <outlet property="nameLabel" destination="R1R-hN-vDw" id="uSC-t4-7wE"/>
+                <outlet property="telNumButton" destination="JX6-cu-MgS" id="iHD-En-Kob"/>
+            </connections>
+            <point key="canvasLocation" x="690" y="345"/>
+        </tableViewCell>
+    </objects>
+</document>

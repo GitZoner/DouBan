@@ -8,6 +8,9 @@
 
 #import "FileHandle.h"
 
+
+
+
 // 存储对象类型的
 #define kUserDefaults(object,key) [[NSUserDefaults standardUserDefaults] setObject:object forKey:key]
 
@@ -19,7 +22,8 @@
 // 获取 Bool 类型的值
 #define kGetBoolUserDefaults(key) [[NSUserDefaults standardUserDefaults] boolForKey:key]
 @implementation FileHandle
-
+// 单例方法
+singleton_implementation(FileHandle)
 // 存储 用户信息
 +(void)saveUserInfo:(User *)user {
     kUserDefaults(user.userId, @"userId");
@@ -50,4 +54,21 @@
     kBoolUserDefaults(NULL, @"loginState");
     kUserDefaults(nil, @"avater");
 }
+
+
+#pragma mark - 数据库操作
+
+// document 文件夹的路径
++(NSString *)documentDirectoryPath {
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+}
+
+// 数据库路径
++ (NSString *)dataBasePath:(NSString *)dataBaseName {
+    NSLog(@"%@",[NSString stringWithFormat:@"%@%@",[[self class] documentDirectoryPath],dataBaseName]);
+    return [NSString stringWithFormat:@"%@%@",[[self class] documentDirectoryPath],dataBaseName];
+                
+}
+
+
 @end

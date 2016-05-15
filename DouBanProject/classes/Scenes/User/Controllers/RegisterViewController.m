@@ -33,6 +33,7 @@
     
     self.imagePicker =[[UIImagePickerController alloc] init];
     self.imagePicker.delegate = self;
+    
 }
 
 #pragma mark --UIImagePickerControllerDelegate

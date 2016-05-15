@@ -13,8 +13,10 @@
 #import "MBProgressHUD+gifHUD.h"
 #import <UMSocialSnsService.h>
 #import <UMSocial.h>
-
+#import <FMDB.h>
 @interface MovieDetailViewController ()<ImageDownloaderDelegate,UMSocialUIDelegate>
+// FMDB 数据库
+@property (strong,nonatomic)FMDatabase *db;
 
 @end
 
@@ -26,10 +28,25 @@
     [self sendRequestGetData];
     // 设置分享按钮
     [self setNavigationItem];
+    // 创建本地收藏数据库
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, NO) lastObject];
+    self.db = [FMDatabase databaseWithPath:[NSString stringWithFormat:@"%@douban.sqlite",path]];
+    // 创建“收藏表格”
     
     
     
     
+    
+    
+    
+}
+
+// 创建数据库并建表
+-(void)createCollectionTable {
+    BOOL hasOpen =[self.db open ];
+    if (hasOpen ) {
+        BOOL hasCreateCollectionTable = [self.db executeUpdate:@""];
+    }
 }
 
 -(void)setNavigationItem {
@@ -51,7 +68,11 @@
                                        delegate:self];
 }
 
+// 收藏按钮点击事件
 -(void)collectionAction:(UIBarButtonItem *)barButttonItem {
+    
+    
+    
     
 }
 

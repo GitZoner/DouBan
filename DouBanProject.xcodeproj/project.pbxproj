@@ -107,6 +107,7 @@
 		C2E1DADA1CDC962800806744 /* UIImage+ImageContentWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E1DAD91CDC962800806744 /* UIImage+ImageContentWithColor.m */; };
 		C2E1DADD1CDC9ECF00806744 /* PublicButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E1DADC1CDC9ECF00806744 /* PublicButton.m */; };
 		C2E1DAE01CDCA3B000806744 /* CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E1DADF1CDCA3B000806744 /* CustomTabBar.m */; };
+		C2F91A201CE704FD001BB2EE /* DataBaseHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F91A1F1CE704FD001BB2EE /* DataBaseHandle.m */; };
 		CF452BABDED8F550C355AE82 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FEBBE31137ECCB38FCCEE16 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -243,6 +244,8 @@
 		C2E1DADC1CDC9ECF00806744 /* PublicButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicButton.m; sourceTree = "<group>"; };
 		C2E1DADE1CDCA3B000806744 /* CustomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBar.h; sourceTree = "<group>"; };
 		C2E1DADF1CDCA3B000806744 /* CustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBar.m; sourceTree = "<group>"; };
+		C2F91A1E1CE704FD001BB2EE /* DataBaseHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseHandle.h; sourceTree = "<group>"; };
+		C2F91A1F1CE704FD001BB2EE /* DataBaseHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseHandle.m; sourceTree = "<group>"; };
 		FB3F1DCAEE1915EF728D2932 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -473,6 +476,8 @@
 				C268F4581CE07F5000E11D81 /* ImageDownloader.m */,
 				C27205B91CE56929006E9872 /* FileHandle.h */,
 				C27205BA1CE56929006E9872 /* FileHandle.m */,
+				C2F91A1E1CE704FD001BB2EE /* DataBaseHandle.h */,
+				C2F91A1F1CE704FD001BB2EE /* DataBaseHandle.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -905,6 +910,7 @@
 				C2E1DA721CDC726A00806744 /* main.m in Sources */,
 				C2E1DAAC1CDC7AED00806744 /* CinemaListViewController.m in Sources */,
 				C226BFF21CE1C8CA00FC2FC0 /* MBProgressHUD+gifHUD.m in Sources */,
+				C2F91A201CE704FD001BB2EE /* DataBaseHandle.m in Sources */,
 				C27205B21CE563D2006E9872 /* RegisterViewController.m in Sources */,
 				C2BC7EAA1CE2DCC2005AE640 /* Activity.m in Sources */,
 				C24296A51CE467F400C8A6CC /* CinemaMapViewController.m in Sources */,
